@@ -8,4 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background_screen">#212179</color>
+
+    <!-- Tema personalizado do App -->
+
+    <!-- Color Primary -->
+    <color name="yellow">#FFe9e60c</color>
+    <color name="yellow_dark">#FFb3b400</color>
+    <color name="yellow_light">#FFffff57</color>
+
+    <!-- Color Secondary -->
+    <color name="blue">#FF0ce9be</color>
+    <color name="blue_dark">#FF00b68e</color>
+    <color name="blue_light">#FF6afff1</color>
+
 </resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Material</string>
+    <string name="opcoes_de_visita">Tipo de visita</string>
+    <string name="visita_business">Business</string>
+</resources>
