@@ -7,6 +7,6 @@ import com.example.meuprimeiroapp.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_secundaria)
+        setContentView(R.layout.activity_main)
     }
 }
