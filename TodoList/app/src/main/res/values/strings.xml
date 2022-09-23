@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TodoList</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="salvar">salvar</string>
+    <string name="nome">Nome</string>
+    <string name="descricao">Descricao</string>
+    <string name="respons_vel">Responsável</string>
+    <string name="data">Data</string>
+    <string name="salvar2">Salvar</string>
+    <string name="em_andamento">Em andamento</string>
+    <string name="nome2">Nome</string>
+    <string name="descricao2">Descricao</string>
+    <string name="responsavel2">Responsavel</string>
+    <string name="data2">Data</string>
+    <string name="porta_botao">porta_botao</string>
+    <string name="clique_para_entrar">Clique Para Entrar:</string>
+    <string name="saida">saida</string>
+</resources>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ComponentesNavegacao</string>
+    <string name="button">Button</string>
+    <string name="voltar">Voltar</string>
+    <string name="ir">Ir</string>
+</resources>
