@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".choice">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/saidaButton"
+            android:layout_width="126dp"
+            android:layout_height="127dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="208dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/voltar"
+            android:scaleType="centerInside"
+            android:src="@drawable/emergencia"
+            app:layout_constraintEnd_toStartOf="@+id/d6Button"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/d20Button"
+            android:layout_width="162dp"
+            android:layout_height="156dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/d20"
+            android:scaleType="centerInside"
+            android:src="@drawable/dice20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/d12Button"
+            app:layout_constraintHorizontal_bias="0.769"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/saidaButton"
+            app:layout_constraintVertical_bias="0.207"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/d12Button"
+            android:layout_width="153dp"
+            android:layout_height="153dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="44dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/d12"
+            android:scaleType="centerInside"
+            android:src="@drawable/dice12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d6Button"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/d6Button"
+            android:layout_width="138dp"
+            android:layout_height="148dp"
+            android:layout_marginTop="208dp"
+            android:layout_marginEnd="56dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/d6"
+            android:scaleType="centerInside"
+            android:src="@drawable/dice6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

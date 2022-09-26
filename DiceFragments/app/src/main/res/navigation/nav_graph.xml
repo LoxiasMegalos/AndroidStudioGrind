@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/choice">
+
+    <fragment
+        android:id="@+id/d6"
+        android:name="com.generation.dicefragments.d6"
+        android:label="fragment_d6"
+        tools:layout="@layout/fragment_d6" >
+        <action
+            android:id="@+id/action_d6_to_choice"
+            app:destination="@id/choice"
+            app:popUpTo="@id/choice"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/d12"
+        android:name="com.generation.dicefragments.d12"
+        android:label="fragment_d12"
+        tools:layout="@layout/fragment_d12" >
+        <action
+            android:id="@+id/action_d12_to_choice"
+            app:destination="@id/choice"
+            app:popUpTo="@id/choice"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/d20"
+        android:name="com.generation.dicefragments.d20"
+        android:label="fragment_d20"
+        tools:layout="@layout/fragment_d20" >
+        <action
+            android:id="@+id/action_d20_to_choice"
+            app:destination="@id/choice"
+            app:popUpTo="@id/choice"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/choice"
+        android:name="com.generation.dicefragments.choice"
+        android:label="fragment_choice"
+        tools:layout="@layout/fragment_choice" >
+        <action
+            android:id="@+id/action_choice_to_d6"
+            app:destination="@id/d6" />
+        <action
+            android:id="@+id/action_choice_to_d12"
+            app:destination="@id/d12" />
+        <action
+            android:id="@+id/action_choice_to_d20"
+            app:destination="@id/d20" />
+        <action
+            android:id="@+id/action_choice_to_mainActivity"
+            app:destination="@id/mainActivity"
+            app:popUpTo="@id/mainActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.generation.dicefragments.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
