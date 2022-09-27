@@ -10,11 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*
         val toolbar = findViewById<Toolbar>(R.id.dm_toolbar)
         val tituloToolbar = findViewById<TextView>(R.id.toolbar_title)
-        tituloToolbar.text = ("Nova Postagem")
+        tituloToolbar.text = ("DesenvolvMED")
         toolbar.setTitle("")
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)*/
 
     }
 

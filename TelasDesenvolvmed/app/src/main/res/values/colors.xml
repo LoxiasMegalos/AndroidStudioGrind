@@ -11,5 +11,6 @@
     <!-- Cores -->
 
     <color name="ice">#eef7ff</color>
-    <color name="blue">#2699ff</color>
+    <color name="ice_30">#4DEEF7FF</color>
+    <color name="blue">#2699FF</color>
 </resources>
