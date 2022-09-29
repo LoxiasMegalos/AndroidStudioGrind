@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/infoFragment">
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.generation.desenvolvmed.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.generation.desenvolvmed.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_selSignUpFragment"
+            app:destination="@id/selSignUpFragment"
+            app:popUpTo="@id/selSignUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_userFeedFragment"
+            app:destination="@id/userFeedFragment"
+            app:popUpTo="@id/userFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.generation.desenvolvmed.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/selSignUpFragment"
+        android:name="com.generation.desenvolvmed.SelSignUpFragment"
+        android:label="fragment_sel_sign_up"
+        tools:layout="@layout/fragment_sel_sign_up" >
+        <action
+            android:id="@+id/action_selSignUpFragment_to_userSignUpFragment"
+            app:destination="@id/userSignUpFragment" />
+        <action
+            android:id="@+id/action_selSignUpFragment_to_doctorSignUpFragment"
+            app:destination="@id/doctorSignUpFragment" />
+        <action
+            android:id="@+id/action_selSignUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSignUpFragment"
+        android:name="com.generation.desenvolvmed.UserSignUpFragment"
+        android:label="fragment_user_sign_up"
+        tools:layout="@layout/fragment_user_sign_up" >
+        <action
+            android:id="@+id/action_userSignUpFragment_to_selSignUpFragment"
+            app:destination="@id/selSignUpFragment"
+            app:popUpTo="@id/selSignUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userSignUpFragment_to_userFeedFragment"
+            app:destination="@id/userFeedFragment"
+            app:popUpTo="@id/userFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorSignUpFragment"
+        android:name="com.generation.desenvolvmed.DoctorSignUpFragment"
+        android:label="fragment_doctor_sign_up"
+        tools:layout="@layout/fragment_doctor_sign_up" >
+        <action
+            android:id="@+id/action_doctorSignUpFragment_to_selSignUpFragment"
+            app:destination="@id/selSignUpFragment"
+            app:popUpTo="@id/selSignUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_doctorSignUpFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFeedFragment"
+        android:name="com.generation.desenvolvmed.UserFeedFragment"
+        android:label="fragment_user_feed"
+        tools:layout="@layout/fragment_user_feed" >
+        <action
+            android:id="@+id/action_userFeedFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_userFeedFragment_to_postagemViewFragment"
+            app:destination="@id/postagemViewFragment" />
+        <action
+            android:id="@+id/action_userFeedFragment_to_searchPostFragment"
+            app:destination="@id/searchPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorFeedFragment"
+        android:name="com.generation.desenvolvmed.DoctorFeedFragment"
+        android:label="fragment_doctor_feed"
+        tools:layout="@layout/fragment_doctor_feed" >
+        <action
+            android:id="@+id/action_doctorFeedFragment_to_postagemViewFragment"
+            app:destination="@id/postagemViewFragment" />
+        <action
+            android:id="@+id/action_doctorFeedFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+        <action
+            android:id="@+id/action_doctorFeedFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
+        <action
+            android:id="@+id/action_doctorFeedFragment_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment" />
+        <action
+            android:id="@+id/action_doctorFeedFragment_to_searchPostFragment"
+            app:destination="@id/searchPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.generation.desenvolvmed.CreatePostFragment"
+        android:label="fragment_create_post"
+        tools:layout="@layout/fragment_create_post" >
+        <action
+            android:id="@+id/action_createPostFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.generation.desenvolvmed.EditPostFragment"
+        android:label="fragment_edit_post"
+        tools:layout="@layout/fragment_edit_post" >
+        <action
+            android:id="@+id/action_editPostFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.generation.desenvolvmed.DoctorProfileFragment"
+        android:label="fragment_doctor_profile"
+        tools:layout="@layout/fragment_doctor_profile" >
+        <action
+            android:id="@+id/action_doctorProfileFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.generation.desenvolvmed.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_userFeedFragment"
+            app:destination="@id/userFeedFragment"
+            app:popUpTo="@id/userFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/postagemViewFragment"
+        android:name="com.generation.desenvolvmed.PostagemViewFragment"
+        android:label="fragment_postagem_view"
+        tools:layout="@layout/fragment_postagem_view" >
+        <action
+            android:id="@+id/action_postagemViewFragment_to_addCommentFragment"
+            app:destination="@id/addCommentFragment" />
+        <action
+            android:id="@+id/action_postagemViewFragment_to_userFeedFragment"
+            app:destination="@id/userFeedFragment"
+            app:popUpTo="@id/userFeedFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_postagemViewFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCommentFragment"
+        android:name="com.generation.desenvolvmed.AddCommentFragment"
+        android:label="fragment_add_comment"
+        tools:layout="@layout/fragment_add_comment" >
+        <action
+            android:id="@+id/action_addCommentFragment_to_postagemViewFragment"
+            app:destination="@id/postagemViewFragment"
+            app:popUpTo="@id/postagemViewFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchPostFragment"
+        android:name="com.generation.desenvolvmed.SearchPostFragment"
+        android:label="fragment_search_post"
+        tools:layout="@layout/fragment_search_post" >
+        <action
+            android:id="@+id/action_searchPostFragment_to_userFeedFragment"
+            app:destination="@id/userFeedFragment"
+            app:popUpTo="@id/userFeedFragment" />
+        <action
+            android:id="@+id/action_searchPostFragment_to_doctorFeedFragment"
+            app:destination="@id/doctorFeedFragment"
+            app:popUpTo="@id/doctorFeedFragment" />
+        <action
+            android:id="@+id/action_searchPostFragment_to_postagemViewFragment"
+            app:destination="@id/postagemViewFragment"
+            app:popUpTo="@id/postagemViewFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
