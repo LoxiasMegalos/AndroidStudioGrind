@@ -43,6 +43,10 @@ class ListFragment : Fragment() {
             Log.d("Requisicao", it.body().toString())
         }
 
+        mainViewModel.tarefaCriada.observe(viewLifecycleOwner){
+            Log.d("Tarefa", it.toString())
+        }
+
         //Configuração do RecyclerView
 
         val adapter = TarefaAdapter()
