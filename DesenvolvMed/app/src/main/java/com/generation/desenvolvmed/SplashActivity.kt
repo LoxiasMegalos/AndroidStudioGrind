@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.ImageView
-import com.generation.desenvolvmed.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -32,8 +33,10 @@ class SplashActivity : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
             finish()
-        }
+
 
 
     }
+}
+
 }

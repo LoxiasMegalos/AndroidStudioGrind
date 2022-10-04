@@ -35,6 +35,8 @@ class ListFragment : Fragment() {
 
         binding = FragmentListBinding.inflate(layoutInflater, container, false)
 
+        mainViewModel.listTarefa()
+
         //val view = inflater.inflate(R.layout.fragment_list, container, false)
 
         //val floatingAdd = view.findViewById<FloatingActionButton>(R.id.floatingAdd)
@@ -57,6 +59,12 @@ class ListFragment : Fragment() {
 
         binding.floatingAdd.setOnClickListener{
             findNavController().navigate(R.id.action_listFragment_to_formFragment)
+        }
+
+        mainViewModel.myTarefaResponse.observe(viewLifecycleOwner){
+            response -> if(response.body() != null){
+                adapter.setList(response.body()!!)
+            }
         }
 
         return binding.root

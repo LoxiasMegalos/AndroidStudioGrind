@@ -1,10 +1,12 @@
 package com.generation.desenvolvmed
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.generation.desenvolvmed.adapter.PostagemAdapter
@@ -17,7 +19,7 @@ class DoctorFeedFragment : Fragment() {
 
 
     private lateinit var binding: FragmentDoctorFeedBinding
-
+    private val mainViewModel: MainViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +28,15 @@ class DoctorFeedFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding = FragmentDoctorFeedBinding.inflate(layoutInflater, container, false)
+
+        mainViewModel.listPostagem()
+
+
+        mainViewModel.listTemas()
+
+        mainViewModel.myTemaResponse.observe(viewLifecycleOwner){
+                response -> Log.d("Requisicao", response.body().toString())
+        }
 
         /*
         val listPostagens = listOf(
@@ -56,15 +67,29 @@ class DoctorFeedFragment : Fragment() {
         binding.recyclerPostagem.adapter = postagemAdapter
         binding.recyclerPostagem.setHasFixedSize(true)
 
+        mainViewModel.myPostagemResponse.observe(viewLifecycleOwner){
+                response -> if(response.body() != null){
+            postagemAdapter.setList(response.body()!!)
+        }
+        }
+
        // postagemAdapter.setList(listPostagens)
 
         binding.addPostButton.setOnClickListener{
             findNavController().navigate(R.id.action_doctorFeedFragment_to_createPostFragment)
         }
 
+        binding.perfilButton.setOnClickListener{
+            findNavController().navigate(R.id.action_doctorFeedFragment_to_doctorProfileFragment)
+        }
+
+
+
         return binding.root
 
 
     }
+
+
 
 }

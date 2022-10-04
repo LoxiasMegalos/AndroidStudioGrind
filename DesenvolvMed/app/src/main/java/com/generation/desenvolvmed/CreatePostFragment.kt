@@ -2,6 +2,7 @@ package com.generation.desenvolvmed
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.generation.desenvolvmed.databinding.FragmentCreatePostBinding
-import com.generation.desenvolvmed.model.Tema
-
+import com.generation.desenvolvmed.model.*
+import java.time.LocalDateTime
 
 
 class CreatePostFragment : Fragment() {
@@ -28,10 +29,15 @@ class CreatePostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         binding = FragmentCreatePostBinding.inflate(layoutInflater, container, false)
 
-        //binding.dmToolbar.toolbarImg.drawable
+        mainViewModel.listTemas()
+
+        mainViewModel.myTemaResponse.observe(viewLifecycleOwner){
+                response -> Log.d("Requisicao", response.body().toString())
+                spinnerTema(response.body())
+        }
 
         binding.botaoPublicar.setOnClickListener {
             inserirNoBanco()
@@ -40,57 +46,63 @@ class CreatePostFragment : Fragment() {
         return binding.root
     }
 
-    private fun spinnerTema(listaTema: List<Tema>) {
+    private fun spinnerTema(listaTema: List<Tema>?) {
+        if(listaTema != null){
+            binding.selecTemas.adapter =
+                ArrayAdapter(
+                    requireContext(),
+                    androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                    listaTema
+                )
 
-        if (listaTema.isNullOrEmpty())
-            throw IllegalArgumentException("Lista vazia!")
+            binding.selecTemas.onItemSelectedListener=
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                        val selected = binding.selecTemas.selectedItem as Tema
+
+                        temaSelecionado = selected.id
+                    }
+
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+                        TODO("Not yet implemented")
+                    }
 
 
-        binding.selecTemas.adapter =
-            ArrayAdapter(
-                requireContext(),
-                androidx.transition.R.layout.support_simple_spinner_dropdown_item,
-                listaTema
-            )
-
-        binding.selecTemas.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    val selected = binding.selecTemas.selectedItem as Tema
-
-                    temaSelecionado = selected.id
                 }
 
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
-                }
-            }
+        }
     }
 
     private fun validarCampos(titulo: String, conteudo: String, anexo: String): Boolean {
         return (
-                (titulo.isNotBlank() || titulo.length in 20..255) &&
-                        (conteudo.isNotBlank() || conteudo.length in 20..5000) &&
-                        (anexo.isNotBlank() || anexo.length in 10..500)
+                (titulo.isNotBlank() && titulo.length in 20..255) &&
+                        (conteudo.isNotBlank() &&  conteudo.length in 20..5000) &&
+                        (anexo.isNotBlank() &&  anexo.length in 10..500)
                 )
     }
 
-    //@RequiresApi(Build.VERSION_CODES.O)
+
+
     private fun inserirNoBanco() {
 
         val titulo = binding.tituloText.text.toString()
         val conteudo = binding.postText.text.toString()
         val anexo = binding.textAnexo.text.toString()
         //val medico = binding.currentUser.medico.id
-        //val medico = Medico(1, "CRM/SP 123546", Cadastro(1, "01754689720",
-        //    "Joviraldo", "Robson", "2154154", "jovis@gmail.com", null ), null)
-        //val data = LocalDateTime.now().toString()
-        //val tema = Tema(temaSelecionado, null, null)
+        val medico = mainViewModel.medicoLogado.value?.body()
+
+        val dataPostagem = LocalDateTime.now().toString()
+
+        val tema = Tema(temaSelecionado, null, null)
 
         if (validarCampos(titulo, conteudo, anexo)) {
 
-            //val postagem = Postagem(0, titulo, conteudo, anexo , data ,tema, medico)
-            //mainViewModel.addPostagem(postagem)
+            val postagem =
+                medico?.let { Postagem(0, titulo, conteudo, anexo , dataPostagem ,tema, it) }
+            if (postagem != null) {
+                mainViewModel.addPostagem(postagem)
+            }
+
             Toast.makeText(context, "Postagem criada!", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_createPostFragment_to_doctorFeedFragment)
 

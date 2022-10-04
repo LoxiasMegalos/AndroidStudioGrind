@@ -1,7 +1,6 @@
 package com.generation.desenvolvmed.api
 
-import com.generation.desenvolvmed.model.Medico
-import com.generation.desenvolvmed.model.Paciente
+import com.generation.desenvolvmed.model.*
 import retrofit2.Response
 
 class Repository {
@@ -18,7 +17,19 @@ class Repository {
         return RetrofitInstance.api.addPaciente(paciente)
     }
 
-    suspend fun addMedico(medico: Medico): Response<Medico> {
+    suspend fun addMedico(medico: MedicoCadastro): Response<MedicoCadastro> {
         return RetrofitInstance.api.addMedico(medico)
+    }
+
+    suspend fun listTemas(): Response<List<Tema>>{
+        return RetrofitInstance.api.listTemas()
+    }
+
+    suspend fun addPostagem(postagem: Postagem): Response<Postagem>{
+        return RetrofitInstance.api.addPostagem(postagem)
+    }
+
+    suspend fun listPostagem(): Response<List<Postagem>>{
+        return RetrofitInstance.api.listPostagem()
     }
 }

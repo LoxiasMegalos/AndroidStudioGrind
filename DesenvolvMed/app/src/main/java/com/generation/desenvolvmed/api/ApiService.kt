@@ -1,7 +1,6 @@
 package com.generation.desenvolvmed.api
 
-import com.generation.desenvolvmed.model.Medico
-import com.generation.desenvolvmed.model.Paciente
+import com.generation.desenvolvmed.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -20,7 +19,17 @@ interface ApiService {
 
     @POST("cadastro/medico")
     suspend fun addMedico(
-        @Body medico: Medico
-    ): Response<Medico>
+        @Body medico: MedicoCadastro
+    ): Response<MedicoCadastro>
 
+    @GET("tema")
+    suspend fun listTemas(): Response<List<Tema>>
+
+    @POST("postagem")
+    suspend fun addPostagem(
+        @Body postagem: Postagem
+    ): Response<Postagem>
+
+    @GET("postagem")
+    suspend fun listPostagem(): Response<List<Postagem>>
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TelasDesenvolvmed</string>
+    <string name="app_name">Desenvolvmed</string>
     <string name="digite_aqui_sua_postagem">Digite aqui sua postagem:</string>
     <string name="t_tulo_da_postagem">Título da Postagem</string>
     <string name="informe_o_tema">Informe o tema:</string>
@@ -22,4 +22,6 @@
     <string name="botao_de_perfil">Botao de Perfil</string>
     <string name="logo" />
     <string name="slogan" />
+    <string name="m_dico">Médico</string>
+    <string name="paciente">Paciente</string>
 </resources>

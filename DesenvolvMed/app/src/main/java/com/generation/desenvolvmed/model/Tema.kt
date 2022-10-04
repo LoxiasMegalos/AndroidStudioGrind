@@ -5,4 +5,9 @@ data class Tema(
     var tema: String?,
     val postagens: List<Postagem>?
 ) {
+
+    override fun toString(): String {
+        return tema!!
+    }
+
 }
