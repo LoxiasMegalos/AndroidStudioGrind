@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169"
+        app:layout_constraintVertical_bias="0.35"
         app:srcCompat="@drawable/desenvolvmedlogo" />
 
     <ImageView
@@ -29,6 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667"
+        app:layout_constraintVertical_bias="0.807"
         app:srcCompat="@drawable/desenvolvmedsplashtexto" />
 </androidx.constraintlayout.widget.ConstraintLayout>

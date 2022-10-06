@@ -12,10 +12,13 @@ interface ApiService {
     @GET("medico/busca-email/{email}")
     suspend fun getCadastroMedicoByEmail(@Path("email") email: String): Response<Medico>
 
+    @GET("cadastro/busca-email/{email}")
+    suspend fun getCadastroByEmail(@Path("email") email: String): Response<Cadastro>
+
     @POST("cadastro/paciente")
     suspend fun addPaciente(
-        @Body paciente: Paciente
-    ): Response<Paciente>
+        @Body paciente: PacienteCadastro
+    ): Response<PacienteCadastro>
 
     @POST("cadastro/medico")
     suspend fun addMedico(
@@ -32,4 +35,14 @@ interface ApiService {
 
     @GET("postagem")
     suspend fun listPostagem(): Response<List<Postagem>>
+
+    @PUT("cadastro/paciente")
+    suspend fun attPaciente(
+        @Body paciente: PacienteCadastro
+    ): Response<PacienteCadastro>
+
+    @PUT("cadastro/medico")
+    suspend fun attMedico(
+        @Body medico: MedicoCadastro
+    ): Response<MedicoCadastro>
 }

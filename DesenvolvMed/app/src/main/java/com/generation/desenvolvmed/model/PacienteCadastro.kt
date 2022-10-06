@@ -1,12 +1,12 @@
 package com.generation.desenvolvmed.model
 
-data class Cadastro(
+class PacienteCadastro(
     val id: Long,
-    val cpf: String,
+    val cpf : String,
     val nome: String,
     val sobrenome: String,
-    var senha: String,
+    val senha: String,
     val email: String,
-    val comentarios: List<Comentario>?
-        ){
+    val convenio: String
+) {
 }

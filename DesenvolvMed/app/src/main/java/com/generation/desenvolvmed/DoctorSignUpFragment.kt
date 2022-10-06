@@ -22,7 +22,9 @@ class DoctorSignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentDoctorSignUpBinding
     private val mainViewModel: MainViewModel by activityViewModels()
-    var email = ""
+    var _email = ""
+    var sucessoCadastro = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,15 +34,15 @@ class DoctorSignUpFragment : Fragment() {
         binding = FragmentDoctorSignUpBinding.inflate(layoutInflater, container, false)
 
         binding.buttonDoctorFeed.setOnClickListener {
+
+
             cadastraMedico()
 
-            Timer().schedule(1000){
-                mainViewModel.getCadastroMedicoByEmail(email)
-            }
-            mainViewModel.medicoLogado.observe(viewLifecycleOwner){
-                    response -> if(response.body() != null){
-                findNavController().navigate(R.id.action_doctorSignUpFragment_to_doctorFeedFragment)
-            }
+            if(sucessoCadastro){
+                vaiProFeed(true)
+            } else{
+                Toast.makeText(context, "E-mail ja cadastrado, faça log in", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_doctorSignUpFragment_to_loginFragment)
             }
         }
 
@@ -48,6 +50,25 @@ class DoctorSignUpFragment : Fragment() {
     }
 
     private fun validarCampos(nome: String, cpf: String, sobrenome: String, email: String, senha: String, crm: String): Boolean {
+
+        return (
+                            (nome.isNotBlank() && nome.length in 1..255) &&
+                            (cpf.isNotBlank() && cpf.length == 11) &&
+                            (sobrenome.isNotBlank() && sobrenome.length in 1..255) &&
+                            (email.isNotBlank() && email.length in 1..255) &&
+                            (senha.isNotBlank() && senha.length in 1..255) &&
+                                    (crm.isNotBlank() && crm.length == 13)
+                )
+    }
+
+    private fun validarEmail(email: String) : Boolean{
+        Timer().schedule(1000) {
+            mainViewModel.getCadastroMedicoByEmail(email)
+        }
+        if(mainViewModel.medicoLogado.value?.body()?.crm != null){
+            Toast.makeText(context, "E-mail ja cadastrado", Toast.LENGTH_SHORT).show()
+            return false
+        }
         return true
     }
 
@@ -55,17 +76,33 @@ class DoctorSignUpFragment : Fragment() {
         val nome = binding.nomeCadastro.text.toString()
         val cpf = binding.cpfCadastro.text.toString()
         val sobrenome = binding.sobrenomeCadastro.text.toString()
-        email = binding.emailCadastro.text.toString()
+        var email = binding.emailCadastro.text.toString()
         val senha = binding.senhaCadastro.text.toString()
         val crm = binding.crmCadastro.text.toString()
 
-        if(validarCampos(nome, cpf, sobrenome, email, senha, crm)){
-            mainViewModel.addMedico(MedicoCadastro(0, cpf, nome, sobrenome, senha, email, crm))
+        if(validarCampos(nome, cpf, sobrenome, email, senha, crm) && validarEmail(email)){
+                Timer().schedule(1000) {
+                    mainViewModel.addMedico(MedicoCadastro(0, cpf, nome, sobrenome, senha, email, crm))
+                    _email = email
+                    sucessoCadastro = true
+                }
         } else {
+            _email = ""
             Toast.makeText(context, "Verifique os campos!", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun vaiProFeed(valor: Boolean){
+        Timer().schedule(1000){
+            mainViewModel.getCadastroMedicoByEmail(_email)
+        }
+        //mainViewModel.medicoLogado.observe(viewLifecycleOwner){
+                //response -> if(response.body() != null){
 
+        Timer().schedule(1000) {
+            findNavController().navigate(R.id.action_doctorSignUpFragment_to_doctorFeedFragment)
+        }//}
+        //}
+    }
 
 }

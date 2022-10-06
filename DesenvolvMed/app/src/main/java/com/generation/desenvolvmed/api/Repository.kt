@@ -13,12 +13,24 @@ class Repository {
         return RetrofitInstance.api.getCadastroMedicoByEmail(email)
     }
 
-    suspend fun addPaciente(paciente: Paciente): Response<Paciente> {
+    suspend fun getCadastroByEmail(email: String): Response<Cadastro>{
+        return RetrofitInstance.api.getCadastroByEmail(email)
+    }
+
+    suspend fun addPaciente(paciente: PacienteCadastro): Response<PacienteCadastro> {
         return RetrofitInstance.api.addPaciente(paciente)
     }
 
     suspend fun addMedico(medico: MedicoCadastro): Response<MedicoCadastro> {
         return RetrofitInstance.api.addMedico(medico)
+    }
+
+    suspend fun attPaciente(paciente: PacienteCadastro): Response<PacienteCadastro> {
+        return RetrofitInstance.api.attPaciente(paciente)
+    }
+
+    suspend fun attMedico(medico: MedicoCadastro): Response<MedicoCadastro> {
+        return RetrofitInstance.api.attMedico(medico)
     }
 
     suspend fun listTemas(): Response<List<Tema>>{
@@ -32,4 +44,6 @@ class Repository {
     suspend fun listPostagem(): Response<List<Postagem>>{
         return RetrofitInstance.api.listPostagem()
     }
+
+
 }

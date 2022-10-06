@@ -20,7 +20,12 @@ class UserProfileFragment : Fragment() {
     ): View? {
         binding = FragmentUserProfileBinding.inflate(layoutInflater, container, false)
 
-        binding.nomePacienteLogado.text = mainViewModel.pacienteLogado.value?.body()?.cadastro?.nome
+        var x = mainViewModel.pacienteLogado.value?.body()?.cadastro?.nome
+        var y = " "
+        var z = mainViewModel.pacienteLogado.value?.body()?.cadastro?.sobrenome
+        var k = x + y + z
+        binding.nomePacienteLogado.text = k
+
         binding.convenioPacienteLogado.text = mainViewModel.pacienteLogado.value?.body()?.convenio
 
         return binding.root

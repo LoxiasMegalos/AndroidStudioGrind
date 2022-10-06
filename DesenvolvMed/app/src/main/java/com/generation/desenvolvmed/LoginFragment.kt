@@ -33,6 +33,10 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_selSignUpFragment)
         }
 
+        binding.buttonSenha.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_passwordFragment)
+        }
+
         return binding.root
     }
 

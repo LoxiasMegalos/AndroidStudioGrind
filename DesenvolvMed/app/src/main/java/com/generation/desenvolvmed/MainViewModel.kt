@@ -23,6 +23,8 @@ class MainViewModel @Inject constructor(
 
     var medicoLogado = MutableLiveData<Response<Medico>>()
 
+    var cadastroVerificado = MutableLiveData<Response<Cadastro>>()
+
     private val _myPostagemResponse = MutableLiveData<Response<List<Postagem>>>()
     val myPostagemResponse : LiveData<Response<List<Postagem>>> = _myPostagemResponse
 
@@ -45,6 +47,17 @@ class MainViewModel @Inject constructor(
                 val response = repository.getCadastroMedicoByEmail(email)
                 medicoLogado.value = response
             } catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun getCadastroByEmail(email: String){
+        viewModelScope.launch {
+            try{
+                val response = repository.getCadastroByEmail(email)
+                cadastroVerificado.value = response
+            } catch (e : Exception){
                 Log.d("Erro", e.message.toString())
             }
         }
@@ -92,10 +105,30 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun addPaciente(paciente: Paciente){
+    fun addPaciente(paciente: PacienteCadastro){
         viewModelScope.launch {
             try{
                 repository.addPaciente(paciente)
+            } catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun attMedico(medico: MedicoCadastro){
+        viewModelScope.launch {
+            try {
+                repository.attMedico(medico)
+            } catch (e : Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun attPaciente(paciente: PacienteCadastro){
+        viewModelScope.launch {
+            try{
+                repository.attPaciente(paciente)
             } catch (e: Exception){
                 Log.d("Erro", e.message.toString())
             }

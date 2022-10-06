@@ -69,8 +69,8 @@ class DoctorFeedFragment : Fragment() {
 
         mainViewModel.myPostagemResponse.observe(viewLifecycleOwner){
                 response -> if(response.body() != null){
-            postagemAdapter.setList(response.body()!!)
-        }
+                    postagemAdapter.setList(response.body()!!)
+                }
         }
 
        // postagemAdapter.setList(listPostagens)
@@ -83,7 +83,9 @@ class DoctorFeedFragment : Fragment() {
             findNavController().navigate(R.id.action_doctorFeedFragment_to_doctorProfileFragment)
         }
 
-
+        binding.homeButton.setOnClickListener{
+            mainViewModel.listPostagem()
+        }
 
         return binding.root
 
