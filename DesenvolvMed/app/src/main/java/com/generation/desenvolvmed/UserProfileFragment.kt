@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.generation.desenvolvmed.databinding.FragmentUserProfileBinding
 
 
@@ -27,6 +28,10 @@ class UserProfileFragment : Fragment() {
         binding.nomePacienteLogado.text = k
 
         binding.convenioPacienteLogado.text = mainViewModel.pacienteLogado.value?.body()?.convenio
+
+        binding.buttonUpdatePacienteProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_userProfileFragment_to_updateUserProfile)
+        }
 
         return binding.root
     }

@@ -82,7 +82,6 @@ class LoginFragment : Fragment() {
                     }
             }
 
-
         } else{
             Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
         }

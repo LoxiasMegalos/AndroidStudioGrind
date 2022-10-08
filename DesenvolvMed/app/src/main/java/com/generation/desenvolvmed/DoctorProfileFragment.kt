@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.generation.desenvolvmed.databinding.FragmentDoctorProfileBinding
 
 
@@ -23,7 +24,9 @@ class DoctorProfileFragment : Fragment() {
 
         binding.crmMedicoLogado.text = mainViewModel.medicoLogado.value?.body()?.crm
         binding.nomeMedicoLogado.text = mainViewModel.medicoLogado.value?.body()?.cadastro?.nome
-
+        binding.buttonUpdateMedico.setOnClickListener {
+            findNavController().navigate(R.id.action_doctorProfileFragment_to_updateDoctorProfile)
+        }
         return binding.root
     }
 

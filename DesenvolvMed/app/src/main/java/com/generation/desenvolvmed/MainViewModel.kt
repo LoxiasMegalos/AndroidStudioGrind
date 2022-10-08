@@ -95,10 +95,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun addMedico(medico: MedicoCadastro){
+    fun addMedico(medico: MedicoCadastro, email: String){
         viewModelScope.launch {
             try {
                 repository.addMedico(medico)
+                val response = repository.getCadastroMedicoByEmail(email)
+                medicoLogado.value = response
             } catch (e : Exception){
                 Log.d("Erro", e.message.toString())
             }
@@ -115,10 +117,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun attMedico(medico: MedicoCadastro){
+    fun attMedico(medico: MedicoCadastro, email: String){
         viewModelScope.launch {
             try {
                 repository.attMedico(medico)
+                val response = repository.getCadastroMedicoByEmail(email)
+                medicoLogado.value = response
             } catch (e : Exception){
                 Log.d("Erro", e.message.toString())
             }

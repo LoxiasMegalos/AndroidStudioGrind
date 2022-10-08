@@ -173,6 +173,9 @@
             app:destination="@id/doctorFeedFragment"
             app:popUpTo="@id/doctorFeedFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_doctorProfileFragment_to_updateDoctorProfile"
+            app:destination="@id/updateDoctorProfile" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
@@ -184,6 +187,9 @@
             app:destination="@id/userFeedFragment"
             app:popUpTo="@id/userFeedFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_updateUserProfile"
+            app:destination="@id/updateUserProfile" />
     </fragment>
     <fragment
         android:id="@+id/postagemViewFragment"
@@ -232,6 +238,28 @@
             android:id="@+id/action_searchPostFragment_to_postagemViewFragment"
             app:destination="@id/postagemViewFragment"
             app:popUpTo="@id/postagemViewFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateUserProfile"
+        android:name="com.generation.desenvolvmed.updateUserProfile"
+        android:label="fragment_update_user_profile"
+        tools:layout="@layout/fragment_update_user_profile" >
+        <action
+            android:id="@+id/action_updateUserProfile_to_userProfileFragment"
+            app:destination="@id/userProfileFragment"
+            app:popUpTo="@id/userProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateDoctorProfile"
+        android:name="com.generation.desenvolvmed.updateDoctorProfile"
+        android:label="fragment_update_doctor_profile"
+        tools:layout="@layout/fragment_update_doctor_profile" >
+        <action
+            android:id="@+id/action_updateDoctorProfile_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment"
+            app:popUpTo="@id/doctorProfileFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

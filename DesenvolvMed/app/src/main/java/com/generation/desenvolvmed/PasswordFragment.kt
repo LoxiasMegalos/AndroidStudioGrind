@@ -69,8 +69,7 @@ class PasswordFragment : Fragment() {
                     senha,
                     mainViewModel.medicoLogado.value?.body()?.cadastro!!.email,
                     mainViewModel.medicoLogado.value?.body()?.crm!!
-                )
-                )
+                ), mainViewModel.medicoLogado.value?.body()?.cadastro?.email.toString())
 
                 mainViewModel.medicoLogado.value?.body()?.cadastro!!.senha = senha
 

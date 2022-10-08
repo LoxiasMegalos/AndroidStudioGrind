@@ -2,6 +2,7 @@ package com.generation.desenvolvmed
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,10 +36,12 @@ class DoctorSignUpFragment : Fragment() {
 
         binding.buttonDoctorFeed.setOnClickListener {
 
-
             cadastraMedico()
+            Timer().schedule(2000) {
 
+            }
             if(sucessoCadastro){
+                mainViewModel.getCadastroMedicoByEmail(_email)
                 vaiProFeed(true)
             } else{
                 Toast.makeText(context, "E-mail ja cadastrado, faça log in", Toast.LENGTH_SHORT).show()
@@ -62,9 +65,8 @@ class DoctorSignUpFragment : Fragment() {
     }
 
     private fun validarEmail(email: String) : Boolean{
-        Timer().schedule(1000) {
-            mainViewModel.getCadastroMedicoByEmail(email)
-        }
+
+        mainViewModel.getCadastroMedicoByEmail(email)
         if(mainViewModel.medicoLogado.value?.body()?.crm != null){
             Toast.makeText(context, "E-mail ja cadastrado", Toast.LENGTH_SHORT).show()
             return false
@@ -81,11 +83,11 @@ class DoctorSignUpFragment : Fragment() {
         val crm = binding.crmCadastro.text.toString()
 
         if(validarCampos(nome, cpf, sobrenome, email, senha, crm) && validarEmail(email)){
-                Timer().schedule(1000) {
-                    mainViewModel.addMedico(MedicoCadastro(0, cpf, nome, sobrenome, senha, email, crm))
-                    _email = email
-                    sucessoCadastro = true
-                }
+
+            mainViewModel.addMedico(MedicoCadastro(0, cpf, nome, sobrenome, senha, email, crm), email)
+            _email = email
+            sucessoCadastro = true
+
         } else {
             _email = ""
             Toast.makeText(context, "Verifique os campos!", Toast.LENGTH_SHORT).show()
@@ -93,16 +95,9 @@ class DoctorSignUpFragment : Fragment() {
     }
 
     private fun vaiProFeed(valor: Boolean){
-        Timer().schedule(1000){
-            mainViewModel.getCadastroMedicoByEmail(_email)
-        }
-        //mainViewModel.medicoLogado.observe(viewLifecycleOwner){
-                //response -> if(response.body() != null){
 
-        Timer().schedule(1000) {
-            findNavController().navigate(R.id.action_doctorSignUpFragment_to_doctorFeedFragment)
-        }//}
-        //}
+        findNavController().navigate(R.id.action_doctorSignUpFragment_to_doctorFeedFragment)
+
     }
 
 }
