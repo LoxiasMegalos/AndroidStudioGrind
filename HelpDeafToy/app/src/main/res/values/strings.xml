@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">HelpDeafToy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="objetivoTexto">Este relatório tem como objetivo apresentar as etapas do
+        desenvolvimento do protótipo Help Deaf Toy, um brinquedo
+        inclusivo voltado às crianças com deficiência auditiva, porém, sem a fala comprometida.</string>
+
+    <string name="justificativaTexto">Ainda que a comunidade surda priorize a linguagem de sinais, existem aqueles que precisam ou escolhem fazer uso da oralização. Surdos oralizados são aqueles que, independentemente do grau de perda auditiva, aprenderam a fazer leituras labiais e a expressar os sons da fala.
+     Conforme estudo de Galvão Filho (2008), acredita-se que o desenvolvimento da língua oral é um dos principais mecanismos para o desenvolvimento intelectual do indivíduo e por isso, incentivam a iniciar o processo de oralização em crianças com deficiência auditiva desde cedo. Além disso, as diferenças experimentadas por indivíduos com necessidades especiais, como no caso de portadores de deficiência auditiva, podem impor-se como uma barreira ao aprendizado.
+    Assim, desenvolver projetos de engenharia com o intuito de disponibilizar tecnologias assistivas a fim de promover acessibilidade, pode ser uma forma eficiente de proporcionar a atenuação das barreiras impostas pela deficiência, possibilitando a inserção ou reinserção desses indivíduos em locais propícios de aprendizagem e desenvolvimento cultural.
+    </string>
+
+    <string name="pesquisaTexto">Após pesquisa de mercado para brinquedos inclusivos voltados para o público surdo sem fala comprometida, percebeu-se que o nicho de mercado era muito específico, não identificando produtos no
+        mercado brasileiro para este setor. Portanto,
+        o protótipo possui essa oportunidade de mercado para seu desenvolvimento.
+    </string>
+
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.murillo.helpdeaftoy.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_infosFragment"
+            app:destination="@id/infosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.murillo.helpdeaftoy.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_infosFragment"
+            app:destination="@id/infosFragment"
+            app:popUpTo="@id/infosFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/infosFragment"
+        android:name="com.murillo.helpdeaftoy.InfosFragment"
+        android:label="fragment_infos"
+        tools:layout="@layout/fragment_infos" >
+        <action
+            android:id="@+id/action_infosFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment"
+            app:popUpTo="@id/perfilFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.murillo.helpdeaftoy.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfilFragment_to_infosFragment"
+            app:destination="@id/infosFragment"
+            app:popUpTo="@id/infosFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_perfilFragment_to_splashScreenFragment"
+            app:destination="@id/splashScreenFragment" />
+    </fragment>
+</navigation>

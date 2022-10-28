@@ -17,8 +17,9 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: Repository
-        ) : ViewModel() {
+) : ViewModel() {
 
+    var tarefaSelecionada: Tarefa? = null
 
     //val repository = Repository()
 
@@ -32,37 +33,59 @@ class MainViewModel @Inject constructor(
     val dataSelecionada = MutableLiveData<LocalDate>()
 
     private val _tarefaCriada = MutableLiveData<Response<Tarefa>>()
-    val tarefaCriada : LiveData<Response<Tarefa>> = _tarefaCriada
+    val tarefaCriada: LiveData<Response<Tarefa>> = _tarefaCriada
 
-    fun listCategoria(){
-        viewModelScope.launch {
-            try{
-                val response = repository.listCategoria()
-                _myCategoriaResponse.value = response
-            } catch (e: Exception){
-                Log.d("Erro", e.message.toString())
-            }
-
-        }
-    }
-
-    fun addTarefa(tarefa: Tarefa){
+    fun listCategoria() {
         viewModelScope.launch {
             try {
-                 val response = repository.addTarefa(tarefa)
+                val response = repository.listCategoria()
+                _myCategoriaResponse.value = response
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+
+        }
+    }
+
+    fun addTarefa(tarefa: Tarefa) {
+        viewModelScope.launch {
+            try {
+                val response = repository.addTarefa(tarefa)
                 _tarefaCriada.value = response
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }
     }
 
-    fun listTarefa(){
-        viewModelScope.launch{
-            try{
+    fun listTarefa() {
+        viewModelScope.launch {
+            try {
                 val response = repository.listTarefa()
                 _myTarefaResponse.value = response
-            } catch(e: Exception){
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun updateTarefa(tarefa: Tarefa) {
+        viewModelScope.launch {
+            try {
+                repository.updateTarefa(tarefa)
+                listTarefa()
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun deleteTarefa(id: Long) {
+        viewModelScope.launch {
+            try {
+                repository.deleteTarefa(id)
+                listTarefa()
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }
