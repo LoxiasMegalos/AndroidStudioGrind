@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GradeUFABC</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="dias">
+        <item name="segunda" type="string">Segunda</item>
+        <item name="terca" type="string">Terça</item>
+        <item name="quarta" type="string">Quarta auto imunes</item>
+        <item name="quinta" type="string">Quinta</item>
+        <item name="sexta" type="string">Sexta</item>
+    </string-array>
+
+</resources>
