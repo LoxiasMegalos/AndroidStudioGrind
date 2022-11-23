@@ -6,9 +6,14 @@
     <string-array name="dias">
         <item name="segunda" type="string">Segunda</item>
         <item name="terca" type="string">Terça</item>
-        <item name="quarta" type="string">Quarta auto imunes</item>
+        <item name="quarta" type="string">Quarta</item>
         <item name="quinta" type="string">Quinta</item>
         <item name="sexta" type="string">Sexta</item>
+    </string-array>
+
+    <string-array name="horarios">
+        <item name="sete" type="string">19</item>
+        <item name="nove" type="string">21</item>
     </string-array>
 
 </resources>

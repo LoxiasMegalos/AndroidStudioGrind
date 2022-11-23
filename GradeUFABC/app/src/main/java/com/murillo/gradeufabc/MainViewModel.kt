@@ -1,5 +1,6 @@
 package com.murillo.gradeufabc
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -9,6 +10,7 @@ import com.murillo.gradeufabc.data.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.time.LocalDate
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
@@ -18,6 +20,10 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
     var listagem = MutableLiveData<List<MateriasDoAluno>>()
 
+    var posicao = MutableLiveData<Int>()
+
+    var diaDeHoje = MutableLiveData<String>()
+
     init {
         val aulasDao = AulasDatabase.getDatabase(application).aulasDao()
         repository = Repository(aulasDao)
@@ -26,7 +32,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     fun addAluno(aluno: Aluno){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addAluno(aluno)
-            alunoLogado = MutableLiveData(repository.getAlunoLogado(aluno.ra))
+            alunoLogado.postValue(repository.getAlunoLogado(aluno.ra))
         }
     }
 
@@ -39,17 +45,29 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     fun getListaDeMaterias(id: Long){
         viewModelScope.launch(Dispatchers.IO){
             val response = repository.getMateriasDoAluno(id)
-            listagem = MutableLiveData(response)
-
+            listagem.postValue(response)
         }
     }
 
     fun getAlunoLogado(ra: String){
         viewModelScope.launch(Dispatchers.IO) {
-            alunoLogado = MutableLiveData(repository.getAlunoLogado(ra))
-            if(alunoLogado.value != null){
-                listagem = MutableLiveData(repository.getMateriasDoAluno(alunoLogado.value!!.id))
+
+            val valueAluno = repository.getAlunoLogado(ra)
+
+
+            if(valueAluno != null){
+                val valueListagem = repository.getMateriasDoAluno(valueAluno.id)
+                listagem.postValue(valueListagem)
+                alunoLogado.postValue(valueAluno)
             }
+
+        }
+    }
+
+    @SuppressLint("NewApi")
+    fun avaliaDia(){
+        viewModelScope.launch {
+            diaDeHoje.postValue(LocalDate.now().dayOfWeek.toString())
         }
     }
 

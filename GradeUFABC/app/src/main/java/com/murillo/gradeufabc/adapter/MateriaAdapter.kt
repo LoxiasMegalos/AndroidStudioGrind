@@ -31,6 +31,18 @@ class MateriaAdapter(
         holder.binding.salaMateriaCard.text = materia.sala
         holder.binding.professorMateriaCard.text = materia.professor
 
+
+
+        println("Printando aqui tbm:" +mainViewModel.diaDeHoje.value.toString())
+        println("Printando aqui:" + materia.primeiroDia)
+
+        if(mainViewModel.diaDeHoje.value.toString() == materia.primeiroDia){
+            var pg = materia.horarioPrimeiroDia
+            holder.binding.horarioMateriaCard.text = pg + ":00"
+        } else{
+            var sg = materia.horarioSegundoDia
+            holder.binding.horarioMateriaCard.text = sg + ":00"
+        }
     }
 
 
@@ -42,4 +54,5 @@ class MateriaAdapter(
         listMateria = list.sortedByDescending { it.idM }
         notifyDataSetChanged()
     }
+
 }

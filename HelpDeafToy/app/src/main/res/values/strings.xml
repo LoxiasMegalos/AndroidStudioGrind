@@ -16,5 +16,8 @@
         mercado brasileiro para este setor. Portanto,
         o protótipo possui essa oportunidade de mercado para seu desenvolvimento.
     </string>
+    <string name="verifique_a_bateria_do_brinquedo">Verifique a bateria do brinquedo! Após ligar o sensor sonoro já estará atuando automaticamente, preste atenção ao visor principal para verificar se o volume do ambiente está em uma intensidade adequada!</string>
+    <string name="feliz">Caso você esteja visualizando um rosto feliz, está tudo certo!</string>
+    <string name="triste">Caso você esteja visualizando um rosto triste, o brinquedo estará se mexendo continuamente, por favor adeque a altura que está sendo produzida no ambiente!</string>
 
 </resources>

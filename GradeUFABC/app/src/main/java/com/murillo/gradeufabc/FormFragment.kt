@@ -7,13 +7,10 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.murillo.gradeufabc.data.Materia
-import com.murillo.gradeufabc.databinding.FragmentCadastroBinding
 import com.murillo.gradeufabc.databinding.FragmentFormBinding
-import com.murillo.gradeufabc.databinding.FragmentGradeBinding
 
 class FormFragment : Fragment() {
 
@@ -27,12 +24,15 @@ class FormFragment : Fragment() {
         binding = FragmentFormBinding.inflate(layoutInflater, container, false)
 
         binding.spinnerSD.visibility = INVISIBLE
+        binding.spinnerSH.visibility = INVISIBLE
 
         binding.checkAula.setOnClickListener {
             if(binding.checkAula.isChecked){
                 binding.spinnerSD.visibility = VISIBLE
+                binding.spinnerSH.visibility = VISIBLE
             } else{
                 binding.spinnerSD.visibility = INVISIBLE
+                binding.spinnerSH.visibility = INVISIBLE
             }
         }
 
@@ -48,23 +48,26 @@ class FormFragment : Fragment() {
         var professor = binding.professorMateria.text.toString()
         var sala = binding.salaMateria.text.toString()
         var pd = binding.spinnerPD.selectedItem.toString()
+        var ph = binding.spinnerPH.selectedItem.toString()
         var sd = binding.spinnerSD.selectedItem.toString()
+        var sh = binding.spinnerSH.selectedItem.toString()
 
+        val materiaAdd : Materia
         if(binding.checkAula.isChecked){
-            mainViewModel.addMateria(Materia(0, materia, professor, sala, pd, sd,
-            mainViewModel.alunoLogado.value!!.id))
+            materiaAdd = Materia(0, materia, professor, sala, pd, ph, sd, sh,
+                mainViewModel.alunoLogado.value!!.id)
+            mainViewModel.addMateria(materiaAdd)
 
         } else{
-            mainViewModel.addMateria(Materia(0, materia, professor, sala, pd, null,
-                mainViewModel.alunoLogado.value!!.id))
+            materiaAdd = Materia(0, materia, professor, sala, pd, ph,null, null,
+                mainViewModel.alunoLogado.value!!.id)
+            mainViewModel.addMateria(materiaAdd)
         }
 
         mainViewModel.getListaDeMaterias(mainViewModel.alunoLogado.value!!.id)
 
         mainViewModel.listagem.observe(viewLifecycleOwner){
-            if(mainViewModel.listagem.value!!.isNotEmpty()){
-                findNavController().navigate(R.id.action_formFragment_to_gradeFragment)
-            }
+            findNavController().navigate(R.id.action_formFragment_to_gradeFragment)
         }
     }
 

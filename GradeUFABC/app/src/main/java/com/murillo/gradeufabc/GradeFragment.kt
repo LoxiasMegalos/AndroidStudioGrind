@@ -25,6 +25,9 @@ class GradeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        mainViewModel.avaliaDia()
+
         binding = FragmentGradeBinding.inflate(layoutInflater, container, false)
 
         binding.addMateria.setOnClickListener{
@@ -33,14 +36,16 @@ class GradeFragment : Fragment() {
 
         binding.raAluno.text = mainViewModel.alunoLogado.value?.ra
 
-        if(mainViewModel.listagem.value != null){
-            getlistagem()
+
+        mainViewModel.listagem.observe(viewLifecycleOwner){
+            response -> if(response != null){
+                getlistagem()
+            }
         }
 
         return binding.root
     }
 
-    @SuppressLint("NewApi")
     private fun getlistagem() {
 
         val adapter = MateriaAdapter(mainViewModel)
@@ -51,26 +56,27 @@ class GradeFragment : Fragment() {
         var idProcurado = mainViewModel.alunoLogado.value?.id
         var materia = emptyList<Materia>()
         var materiasAdapter = mutableListOf<Materia>()
+        var index = 0
 
         for(i in mainViewModel.listagem.value!!){
+            index += 1
             if(i.aluno.id == idProcurado){
+                mainViewModel.posicao.postValue(index)
                 materia = i.materias
                 break
             }
         }
-        var diaDeHoje = LocalDate.now().dayOfWeek.toString()
+
 
         for(m in materia){
             m.primeiroDia = converteDia(m.primeiroDia)
             if(m.segundoDia != null){
                 m.segundoDia = converteDia(m.segundoDia!!)
             }
-            if(m.primeiroDia == diaDeHoje || m.segundoDia == diaDeHoje){
+            if(m.primeiroDia == mainViewModel.diaDeHoje.value.toString() || m.segundoDia == mainViewModel.diaDeHoje.value.toString()){
                 materiasAdapter.add(m)
             }
         }
-
-        println(diaDeHoje)
 
         adapter.setList(materiasAdapter)
 

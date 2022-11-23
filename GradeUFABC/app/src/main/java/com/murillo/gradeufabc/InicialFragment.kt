@@ -36,6 +36,7 @@ class InicialFragment : Fragment() {
             findNavController().navigate(R.id.action_inicialFragment_to_cadastroFragment)
         }
 
+        mainViewModel.avaliaDia()
 
         return binding.root
     }
@@ -46,11 +47,14 @@ class InicialFragment : Fragment() {
 
         mainViewModel.getAlunoLogado(ra)
 
+
         mainViewModel.alunoLogado.observe(viewLifecycleOwner){
-            if(mainViewModel.alunoLogado.value?.ra == ra && mainViewModel.alunoLogado.value?.nome == nome){
+            response -> if(response.ra == ra && response.nome == nome && mainViewModel.diaDeHoje != null){
                 findNavController().navigate(R.id.action_inicialFragment_to_gradeFragment)
             }
         }
+
+
     }
 
 
